@@ -15,11 +15,9 @@ class Solution:
             if l <= r:
                 V += l - height[i]
                 i += 1
-                print(i)
             else:
                 V += r - height[j]
                 j -= 1
-                print(j)
         return V
 
 

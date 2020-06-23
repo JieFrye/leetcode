@@ -9,8 +9,12 @@ class ListNode:
 
 class Solution:
     def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
+        '''
+        ideas: use carry to keep track of the carryover digit
+        '''
         root = s = ListNode(0)
         carry = 0
+        # while we still have number to add
         while l1 or l2 or carry:
             if l1:
                 carry += l1.val
@@ -18,8 +22,11 @@ class Solution:
             if l2:
                 carry += l2.val
                 l2 = l2.next
+            # create node for digit in the sum
             s.next = ListNode(carry % 10)
+            # move the pointer
             s = s.next
+            # transfer carry to the next digit
             carry = carry // 10
         return root.next
 
