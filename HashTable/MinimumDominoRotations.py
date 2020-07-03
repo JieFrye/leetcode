@@ -14,6 +14,8 @@ class Solution:
 		Ideas:
 		Take advantage of the note 1 <= A[i], B[i] <= 6
 		Use dic for number: count
+		No need to worry about the position.
+		If count_a + count_b - same = n, we have a match.
 		'''
 		n = len(A)
 		if len(B) != n:
