@@ -25,7 +25,8 @@ class Solution:
         cells[1:6] have 2^6 = 64 total possiblities but only some are valid.
                                        [0,*,0,x,0,1,0,0] prev
         for example, a state cannot be [0,1,0,0,0,1,0,0]
-        for large N, there will be a cycle. Use a set to detect the len(cycle)
+        Use exclusive-or T^T=F, F^F=F, T^F=T, F^T=T (exactly one is true).
+        For large N, there will be a cycle. Use a set to detect the len(cycle)
         '''
         d = 0
         seen = set()
