@@ -22,7 +22,7 @@ class Codec:
         Ls = self.serialize(root.left)
         Rs = self.serialize(root.right)
         return root.val, Ls, Rs
-        # root, (Lroot, L, R), (Rroot, L, R)
+        # root, (Lroot, L, R), (Rroot, L, R) nested
 
     def deserialize(self, data):
         """Decodes your encoded data to tree.

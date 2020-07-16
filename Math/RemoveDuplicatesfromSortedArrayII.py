@@ -24,6 +24,8 @@ class Solution:
                 i += 1
         return i
 
+
+
 nums = [0,0,1,1,1,1,2,3,3]
 sol = Solution()
 print(sol.removeDuplicates(nums))
