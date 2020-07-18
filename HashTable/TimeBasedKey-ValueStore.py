@@ -18,31 +18,35 @@ class TimeMap:
         """
         Initialize your data structure here.
         """
-        self.getkey = defaultdict(list)
-        self.getval = {}
+        self.dic = defaultdict(list)
 
     def set(self, key: str, value: str, timestamp: int) -> None:
         '''
         ideas:
-        use dic to hold {key: [times]}
-        use another dic to look up {(key, time): value}
+        use dic to hold {key: [(time, value)]}
         '''
-        self.getkey[key].append(timestamp)
-        self.getval[(key, timestamp)] = value
+        self.dic[key].append((timestamp, value))
 
 
     def get(self, key: str, timestamp: int) -> str:
         '''
         ideas:
         use bisection to find idx instead of sort then loop
+        The timestamps for all TimeMap.set operations are strictly increasing.
         '''
-        if key in self.getkey:
-            self.getkey[key].sort()
-            n = len(self.getkey[key])
-            for i in range(n-1, -1, -1):
-                if self.getkey[key][i] <= timestamp:
-                    return self.getval[(key, self.getkey[key][i])]
-        return ""
+        arr = self.dic[key]
+        n = len(arr)
+        low, high = 0, n
+        while low < high:
+            mid = (low + high) // 2
+            if arr[mid][0] <= timestamp:
+                low = mid + 1
+            elif arr[mid][0] > timestamp:
+                high = mid
+        if high > 0: # high - 1 >= 0
+            return arr[high-1][1]
+        else:
+            return ""
 
 
 
