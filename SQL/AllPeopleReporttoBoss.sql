@@ -53,4 +53,4 @@ WITH EmployeeCTE AS
   FROM Employees JOIN EmployeeCTE
   ON Employees.manager_id = EmployeeCTE.employee_id
 )
-SELECT * FROM EmployeeCTE
+SELECT * FROM EmployeeCTE;
