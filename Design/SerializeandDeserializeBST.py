@@ -12,8 +12,10 @@ class Codec:
     def serialize(self, root: TreeNode) -> str:
         """Encodes a tree to a single string.
              5
+            / \
           2     8
-        1   3      9
+         / \     \
+        1   3     9
         """
         vals = []
         def preorderString(node):
