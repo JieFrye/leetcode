@@ -13,21 +13,29 @@ class Solution:
         '''
         use recoursion
         "catsanddog" = 'cat' + wordBreak("sanddog")
-        use DP to deal with
+        use DP = {s:list} to deal with
         "aaaaaaa" and {'a', 'aa', 'aaa'} because
         "aaaaaaa" = 'a' + 'a' + wordBreak("aaaaa")
         "aaaaaaa" = 'aa' + wordBreak("aaaaa")
         '''
-        result = []
-        for w in wordDict:
-            if s[:len(w)] == w:
-                if len(w) == len(s):
-                    result.append(w)
-                else:
-                    temp = self.wordBreak(s[len(w):], wordDict)
-                    for t in temp:
-                        result.append(w + " " + t)
-        return result
+        dp = {}
+
+        def wordBreakII(s):
+            if s in dp:
+                return dp[s]
+            result = []
+            for w in wordDict:
+                if s[:len(w)] == w:
+                    if len(w) == len(s):
+                        result.append(w)
+                    else:
+                        temp = wordBreakII(s[len(w):])
+                        for t in temp:
+                            result.append(w + " " + t)
+            dp[s] = result
+            return result
+
+        return wordBreakII(s)
 
 s = "catsanddog"
 words = ["cat", "cats", "and", "sand", "dog"]
